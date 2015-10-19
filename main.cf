@@ -1,0 +1,59 @@
+#
+# postfix workstation setup
+# - relay through google, with sender-dependent auth creds
+# - local delivery attempted for unqualified or machine-qualified
+#
+# scott@smemsh.net
+# http://smemsh.net/src/rc.postfix/
+# http://spdx.org/licenses/GPL-2.0.html
+#
+##############################################################################
+
+biff					= no
+delay_warning_time			= 1h
+mailbox_command				= procmail
+inet_interfaces				= loopback-only
+inet_protocols				= ipv4
+alias_maps				= hash:/etc/aliases
+alias_database				= $alias_maps
+
+# defined relay is via sender_dependent_relayhost_maps
+# (using smtp_sasl_password_map credentials), with gmail
+# as fallback (todo: with what creds in default case?)
+#
+relayhost				= [smtp.gmail.com]:587
+default_transport			= smtp
+relay_transport				= relay
+smtp_sender_dependent_authentication	= yes
+local_recipient_maps			= unix:passwd.byname $alias_maps
+
+# use as early exits for debugging
+#
+#relay_transport			= error
+#default_transport			= error
+
+# (2 << 31 - 1
+#mailbox_size_limit			= 4294967295
+mailbox_size_limit			= 0
+
+# 192 << 20
+#message_size_limit			= 201326592
+message_size_limit			= 0
+
+#smtp_bind_address			= 1.2.3.4
+smtp_use_tls				= yes
+smtp_enforce_tls			= yes
+smtp_tls_enforce_peername		= no
+smtp_sasl_auth_enable			= yes
+smtp_sasl_security_options		= noanonymous
+
+smtp_sasl_password_maps =
+	hash:/etc/postfix/crypt/sasl_auth_map
+
+sender_dependent_relayhost_maps =
+	hash:/etc/postfix/crypt/sender_relay_map
+
+###
+
+#debug_peer_list			= 127.0.0.1
+#debug_peer_level			= 5
