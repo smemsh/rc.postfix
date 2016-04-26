@@ -9,6 +9,8 @@
 #
 ##############################################################################
 
+compatibility_level			= 2
+
 biff					= no
 delay_warning_time			= 1h
 mailbox_command				= procmail
