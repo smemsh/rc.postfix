@@ -36,11 +36,6 @@ relay_transport                         = relay
 smtp_sender_dependent_authentication    = yes
 local_recipient_maps                    = unix:passwd.byname $alias_maps
 
-# use as early exits for debugging
-#
-#relay_transport                        = error
-#default_transport                      = error
-
 #smtp_bind_address                      = 1.2.3.4
 smtp_use_tls                            = yes
 smtp_enforce_tls                        = yes
@@ -56,5 +51,7 @@ sender_dependent_relayhost_maps =
 
 ###
 
+#relay_transport                        = error
+#default_transport                      = error
 #debug_peer_list                        = 127.0.0.1
 #debug_peer_level                       = 5
