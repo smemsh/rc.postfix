@@ -22,6 +22,10 @@ soft_bounce                             = yes
 notify_classes                          = bounce, data, delay, policy,
                                           protocol, resource, software
 
+#
+mailbox_size_limit                      = 0
+message_size_limit                      = 0
+
 # defined relay is via sender_dependent_relayhost_maps
 # (using smtp_sasl_password_map credentials), with gmail
 # as fallback (todo: with what creds in default case?)
@@ -36,14 +40,6 @@ local_recipient_maps                    = unix:passwd.byname $alias_maps
 #
 #relay_transport                        = error
 #default_transport                      = error
-
-# (2 << 31 - 1
-#mailbox_size_limit                     = 4294967295
-mailbox_size_limit                      = 0
-
-# 192 << 20
-#message_size_limit                     = 201326592
-message_size_limit                      = 0
 
 #smtp_bind_address                      = 1.2.3.4
 smtp_use_tls                            = yes
