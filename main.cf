@@ -18,6 +18,9 @@ inet_interfaces                         = loopback-only
 inet_protocols                          = ipv4
 alias_maps                              = hash:/etc/aliases
 alias_database                          = $alias_maps
+soft_bounce                             = yes
+notify_classes                          = bounce, data, delay, policy,
+                                          protocol, resource, software
 
 # defined relay is via sender_dependent_relayhost_maps
 # (using smtp_sasl_password_map credentials), with gmail
