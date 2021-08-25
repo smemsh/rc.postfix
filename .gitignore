@@ -1,7 +1,13 @@
 #
 
 dynamicmaps.cf
+dynamicmaps.cf.d/
 postfix-files
+postfix-files.d/
 postfix-script
 post-install
 *.db
+main.cf.*
+master.cf.*
+makedefs.out
+sasl/
