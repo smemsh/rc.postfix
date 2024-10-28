@@ -4,7 +4,7 @@
 # - local delivery attempted for unqualified or machine-qualified
 #
 # scott@smemsh.net
-# http://smemsh.net/src/rc.postfix/
+# https://github.com/smemsh/rc.postfix/
 # http://spdx.org/licenses/GPL-2.0.html
 #
 ##############################################################################
